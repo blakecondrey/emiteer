@@ -23,6 +23,10 @@
     "eventemitter",
     "EventEmitter"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blakecondrey/emiteer"
+  },
   "author": "Blake Condrey",
   "license": "ISC",
   "devDependencies": {
