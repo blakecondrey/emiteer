@@ -21,7 +21,7 @@ import Emiteer from 'emiteer'
 Then, create an instance of Emiteer:
 
 ```typescript
-const emitter = new Emiteer()
+const emiteer = new Emiteer()
 ```
 
 ### Adding Event Listeners
@@ -29,15 +29,25 @@ const emitter = new Emiteer()
 You can add event listeners using the `on` method:
 
 ```typescript
-const subscriptionToken = emitter.on('eventName', (payload, eventName) => {
+const subscriptionToken = emiteer.on('eventName', (payload, eventName) => {
   console.log(`Received event: ${eventName}, Payload:`, payload)
 })
+```
+
+Another Example:
+
+```typescript
+function logPayload(payload) {
+  console.log(`Logging payload: ${payload}`)
+}
+
+emiteer.on('payload:show', logPayload)
 ```
 
 You can also subscribe to an event that will be triggered only once using the `once` method:
 
 ```typescript
-const onceToken = emitter.once('eventNameOnce', (payload, eventName) => {
+const onceToken = emiteer.once('eventNameOnce', (payload, eventName) => {
   console.log(`Received event once: ${eventName}, Payload:`, payload)
 })
 ```
@@ -47,7 +57,25 @@ const onceToken = emitter.once('eventNameOnce', (payload, eventName) => {
 You can emit events using the `emit` method:
 
 ```typescript
-emitter.emit('eventName', { message: 'Hello, Emiteer!' })
+emiteer.emit('eventName', { message: 'Hello, Emiteer!' })
+```
+
+Another example:
+
+```typescript
+function logPayload(payload) {
+  console.log(`Logging payload: ${payload}`)
+}
+
+emiteer.on('payload:show', logPayload)
+
+// ------------- another file, component, fn
+
+const payload = { foo: 'bar' }
+
+emiteer.emit('payload:show', payload)
+
+// "Logging payload: {foo: bar}"
 ```
 
 ### Removing Event Listeners
@@ -55,7 +83,7 @@ emitter.emit('eventName', { message: 'Hello, Emiteer!' })
 To remove event listeners, you can use the `off` method:
 
 ```typescript
-emitter.off('eventName', subscriptionToken)
+emiteer.off('eventName', subscriptionToken)
 ```
 
 ### Utility Methods
