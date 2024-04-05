@@ -1,6 +1,6 @@
 {
   "name": "emiteer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JavaScript event emitter built in TypeScript",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
